@@ -18,6 +18,7 @@ public class ResponseFilter extends OncePerRequestFilter {
                                     FilterChain filterChain)
             throws ServletException, IOException {
         httpServletResponse.addHeader("Server", "pams/1.0.0");
+        httpServletResponse.addHeader("Access-Control-Allow-Headers", "*");
         httpServletResponse.addHeader("Access-Control-Allow-Origin", "*"); //bypass CORS
         filterChain.doFilter(httpServletRequest, httpServletResponse);
     }

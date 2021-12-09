@@ -77,7 +77,7 @@ public class AssetController {
         return resp;
     }
 
-    @PostMapping("/delete/{id}")
+    @GetMapping("/delete/{id}")
     public Response deleteAsset(@RequestHeader String token, @PathVariable String id) {
         var resp = checkToken(token, User.ROLE_ADMIN);
         if (resp.code == Response.CODE_OK) {
