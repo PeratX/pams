@@ -1,0 +1,31 @@
+POST http://127.0.0.1:8080/api/asset/add
+Content-Type: application/json
+Token: 1ead5ea19547239d350edd28aadc1895e7c9632b8c3f23862be9ce98b1d582de
+
+{
+  "label": "chair",
+  "desc": "一把椅子",
+  "value": "123"
+}
+
+###
+GET http://127.0.0.1:8080/api/asset/list
+Content-Type: application/json
+Token: 1ead5ea19547239d350edd28aadc1895e7c9632b8c3f23862be9ce98b1d582de
+
+###
+POST http://127.0.0.1:8080/api/auth/user
+Content-Type: application/json
+
+{
+  "token": "1ead5ea19547239d350edd28aadc1895e7c9632b8c3f23862be9ce98b1d582de"
+}
+
+###
+POST http://127.0.0.1:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "pe",
+  "password": "123456"
+}
