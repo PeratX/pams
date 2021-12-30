@@ -16,9 +16,11 @@ public class User {
     @Column
     private String name;
 
+    @JsonIgnore
     @Column(nullable = false)
     private String password;
 
+    @JsonIgnore
     @Column
     private String token;
 
