@@ -1,6 +1,7 @@
 package org.itxtech.pams.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,9 @@ public class User {
 
     @Column
     private int role = ROLE_NONE;
+
+    @OneToMany(mappedBy = "user")
+    private Set<AssetLog> logs;
 
     public String getPassword() {
         return password;
@@ -52,5 +56,13 @@ public class User {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", role=" + role +
+                '}';
     }
 }

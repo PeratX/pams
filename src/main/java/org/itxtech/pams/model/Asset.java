@@ -1,6 +1,7 @@
 package org.itxtech.pams.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "assets")
@@ -17,6 +18,12 @@ public class Asset {
 
     @Column(nullable = false)
     private String description;
+
+    @Column(nullable = false)
+    private int amount = 0;
+
+    @OneToMany(mappedBy = "asset")
+    private Set<AssetLog> logs;
 
     public Long getId() {
         return id;
@@ -48,5 +55,32 @@ public class Asset {
 
     public void setDescription(String desc) {
         this.description = desc;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public Set<AssetLog> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(Set<AssetLog> logs) {
+        this.logs = logs;
+    }
+
+    @Override
+    public String toString() {
+        return "Asset{" +
+                "id=" + id +
+                ", label='" + label + '\'' +
+                ", value=" + value +
+                ", description='" + description + '\'' +
+                ", amount=" + amount +
+                '}';
     }
 }
