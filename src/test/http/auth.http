@@ -1,24 +1,66 @@
+POST http://127.0.0.1:4637/api/asset/logs
+Content-Type: application/json
+Token: ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6
+
+{
+  "id": 3
+}
+
+###
+POST http://127.0.0.1:4637/api/asset/warehouse/3
+Content-Type: application/json
+Token: ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6
+
+{
+  "amount": 20,
+  "action": 1
+}
+
+###
+POST http://127.0.0.1:4637/api/asset/warehouse/3
+Content-Type: application/json
+Token: ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6
+
+{
+  "amount": 50,
+  "action": 0
+}
+
+###
 POST http://127.0.0.1:4637/api/asset/add
 Content-Type: application/json
-Token: 1ead5ea19547239d350edd28aadc1895e7c9632b8c3f23862be9ce98b1d582de
+Token: ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6
 
 {
   "label": "chair",
   "desc": "一把椅子",
-  "value": "123"
+  "value": "123",
+  "amount": "50"
+}
+
+###
+POST http://127.0.0.1:4637/api/asset/add
+Content-Type: application/json
+Token: ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6
+
+{
+  "label": "computer",
+  "desc": "电脑",
+  "value": "4999",
+  "amount": "100"
 }
 
 ###
 GET http://127.0.0.1:4637/api/asset/list
 Content-Type: application/json
-Token: 1ead5ea19547239d350edd28aadc1895e7c9632b8c3f23862be9ce98b1d582de
+Token: ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6
 
 ###
 POST http://127.0.0.1:4637/api/auth/user
 Content-Type: application/json
 
 {
-  "token": "1ead5ea19547239d350edd28aadc1895e7c9632b8c3f23862be9ce98b1d582de"
+  "token": "ad1b7b67b198c56952eec0c7fb8b9c381520dea940d83c0b72ef1556d93e73e6"
 }
 
 ###

@@ -1,5 +1,7 @@
 package org.itxtech.pams.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -7,7 +9,7 @@ import java.util.Set;
 @Table(name = "assets")
 public class Asset {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
@@ -22,6 +24,7 @@ public class Asset {
     @Column(nullable = false)
     private int amount = 0;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "asset")
     private Set<AssetLog> logs;
 

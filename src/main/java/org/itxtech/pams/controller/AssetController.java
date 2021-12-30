@@ -107,7 +107,7 @@ public class AssetController {
     }
 
     @PostMapping("/warehouse/{id}")
-    public Response warehourse(
+    public Response warehouse(
             @RequestHeader String token, @PathVariable String id,
             @RequestBody Map<String, String> body
     ) {

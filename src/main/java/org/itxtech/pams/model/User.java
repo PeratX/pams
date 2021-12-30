@@ -1,5 +1,7 @@
 package org.itxtech.pams.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -23,6 +25,7 @@ public class User {
     @Column
     private int role = ROLE_NONE;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user")
     private Set<AssetLog> logs;
 
