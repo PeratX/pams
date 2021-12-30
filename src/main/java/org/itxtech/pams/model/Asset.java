@@ -24,6 +24,9 @@ public class Asset {
     @Column(nullable = false)
     private int amount = 0;
 
+    @Column(nullable = false)
+    private boolean disabled = false;
+
     @JsonIgnore
     @OneToMany(mappedBy = "asset")
     private Set<AssetLog> logs;
@@ -85,5 +88,13 @@ public class Asset {
                 ", description='" + description + '\'' +
                 ", amount=" + amount +
                 '}';
+    }
+
+    public boolean isDisabled() {
+        return disabled;
+    }
+
+    public void setDisabled(boolean disabled) {
+        this.disabled = disabled;
     }
 }

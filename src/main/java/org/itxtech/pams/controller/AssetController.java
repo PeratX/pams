@@ -53,7 +53,7 @@ public class AssetController {
     public Response listAssets(@RequestHeader String token) {
         var resp = checkToken(token, User.ROLE_VIEWER);
         if (resp.response.code == Response.CODE_OK) {
-            resp.response.data = assetRepo.findAll();
+            resp.response.data = assetRepo.findAllByDisabled(false);
         }
         return resp.response;
     }
@@ -156,15 +156,17 @@ public class AssetController {
             var asset = assetRepo.findById(Long.parseLong(id));
             if (asset.isEmpty()) {
                 resp.response.code = Response.CODE_ERR;
-                resp.response.msg = "未找到资产";
+                resp.response.msg = "未找到货品";
             } else {
                 var a = asset.get();
                 var log = new AssetLog();
                 log.setUser(resp.user);
                 log.setAction(AssetLog.ACTION_MODIFY);
                 log.setAsset(a);
-                log.setMessage("删除库存：" + a);
-                assetRepo.delete(a);
+                log.setMessage("标记删除货品：" + a);
+                logRepo.save(log);
+                a.setDisabled(true);
+                assetRepo.save(a);
             }
         }
         return resp.response;
@@ -179,7 +181,7 @@ public class AssetController {
             var label = body.getOrDefault("label", "");
             var desc = body.getOrDefault("desc", "");
             var value = body.getOrDefault("value", "0");
-            var amount = body.getOrDefault("Amount", "0");
+            var amount = body.getOrDefault("amount", "0");
             a.setLabel(label);
             a.setDescription(desc);
             a.setValue(Integer.parseInt(value));
