@@ -127,6 +127,7 @@ public class AssetController {
                 var amount = Integer.parseInt(body.getOrDefault("amount", "0"));
                 var message = body.getOrDefault("message", "");
                 var action = Integer.parseInt(body.getOrDefault("action", "0"));
+                log.setAmount(amount);
 
                 if (action == AssetLog.ACTION_IN) {
                     msg = "入库数量： " + amount + " 原数量：" + a.getAmount() + " 备注：" + message;
